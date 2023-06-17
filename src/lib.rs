@@ -64,7 +64,7 @@ impl Transport for WebsocketTransport {
     type ListenerUpgrade = Ready<Result<Self::Output, Self::Error>>;
     type Dial = Pin<Box<dyn Future<Output = Result<Self::Output, Self::Error>> + Send>>;
 
-    fn listen_on(&mut self, _addr: Multiaddr) -> Result<ListenerId, TransportError<Self::Error>> {
+    fn listen_on(&mut self, _id: ListenerId, _addr: Multiaddr) -> Result<ListenerId, TransportError<Self::Error>> {
         Err(TransportError::Other(Error::NotSupported))
     }
 
